@@ -1,0 +1,8 @@
+# Default: cache HTML and scripts lightly
+/*
+  Cache-Control: no-cache
+  X-Content-Type-Options: nosniff
+
+# Cache logos for 1 day (or adjust as needed)
+/worldhams-logo*.png
+  Cache-Control: public, max-age=86400
