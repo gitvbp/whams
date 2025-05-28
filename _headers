@@ -1,17 +1,18 @@
-# Default: cache HTML and scripts lightly
-/*
-  Cache-Control: no-cache
-  X-Content-Type-Options: nosniff
-
-# Cache logos for 1 day (or adjust as needed)
-/worldhams-logo*.png
-  Cache-Control: public, max-age=86400
+# Root domain redirect (must come first)
 http://worldhams.world/*
-  Cache-Control: no-store
   x-redirect: https://www.worldhams.world/
 
-# Serve app-ads.txt on BOTH domains
-https://worldhams.world/app-ads.txt
-  Cache-Control: no-store
-https://www.worldhams.world/app-ads.txt
-  Cache-Control: no-store
+# Critical AdMob verification file
+/app-ads.txt
+  Cache-Control: no-store, no-cache, must-revalidate
+  Access-Control-Allow-Origin: *
+
+# Security headers for all pages
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Logo caching (adjust paths if needed)
+/worldhams-logo*.png
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600
