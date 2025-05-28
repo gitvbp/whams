@@ -6,3 +6,6 @@
 # Cache logos for 1 day (or adjust as needed)
 /worldhams-logo*.png
   Cache-Control: public, max-age=86400
+http://worldhams.world/*
+  Cache-Control: no-store
+  x-redirect: https://www.worldhams.world/
