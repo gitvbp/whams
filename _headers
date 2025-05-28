@@ -9,3 +9,9 @@
 http://worldhams.world/*
   Cache-Control: no-store
   x-redirect: https://www.worldhams.world/
+
+# Serve app-ads.txt on BOTH domains
+https://worldhams.world/app-ads.txt
+  Cache-Control: no-store
+https://www.worldhams.world/app-ads.txt
+  Cache-Control: no-store
