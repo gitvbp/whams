@@ -23,12 +23,29 @@
       background-color: #f4f4f4;
     }
 
+    #menuToggle {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 28px;
+      background: #2c3e50;
+      color: white;
+      border: none;
+      z-index: 1001;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
     nav {
       width: 250px;
       background-color: #2c3e50;
       color: white;
       padding: 20px;
       flex-shrink: 0;
+      height: 100vh;
+      transition: transform 0.3s ease-in-out;
     }
 
     nav h2 {
@@ -66,10 +83,38 @@
       border: none;
       background-color: white;
     }
+
+    @media (max-width: 768px) {
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        z-index: 1000;
+      }
+
+      nav.open {
+        transform: translateX(0);
+      }
+
+      #menuToggle {
+        display: block;
+      }
+
+      body {
+        flex-direction: column;
+      }
+
+      main {
+        padding-top: 60px;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav>
+  <button id="menuToggle">☰</button>
+
+  <nav id="sidebar">
     <h2>WorldHams Docs</h2>
     <ul>
       <li><a href="privacy.html" target="contentFrame">Privacy Policy</a></li>
@@ -77,14 +122,22 @@
       <li><a href="disclaimer.html" target="contentFrame">Disclaimer</a></li>
       <li><a href="techdoc.pdf" target="contentFrame">Technical Doc (PDF)</a></li>
       <li><a href="datadeletion.html" target="contentFrame">Data Deletion Info</a></li>
-      <li>Maintained by VU3JPD </li>
-      <li><a href="https://vu3jpd.com/" target="_blank" rel="noopener noreferrer">VU3JPD Website</a>
-</li>
+      <li>Maintained by VU3JPD</li>
+      <li><a href="https://vu3jpd.com/" target="_blank" rel="noopener noreferrer">VU3JPD Website</a></li>
     </ul>
   </nav>
 
   <main>
     <iframe name="contentFrame" src="privacy.html" title="Document Content Frame"></iframe>
   </main>
+
+  <script>
+    const toggleBtn = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleBtn.onclick = () => {
+      sidebar.classList.toggle("open");
+    };
+  </script>
 </body>
 </html>
